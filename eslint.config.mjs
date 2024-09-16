@@ -5,32 +5,32 @@ import parser from '@typescript-eslint/parser'
 
 export default [
   {
-    // Definimos los archivos que queremos analizar
+    // We define the files we want to lint
     files: ['**/*.{js,mjs,cjs,ts}'],
     languageOptions: {
       globals: globals.browser,
-      parser, // Especificamos el parser de TypeScript
+      parser, // We specify the TypeScript parser
       parserOptions: {
-        project: './tsconfig.json', // Agregamos el archivo tsconfig.json
-        sourceType: 'module', // Si usas módulos de ECMAScript
-        ecmaVersion: 2020, // Compatibilidad con ECMAScript moderno
+        project: './tsconfig.json', // We add the tsconfig.json file
+        sourceType: 'module', // If you use ECMAScript modules
+        ecmaVersion: 2020, // Compatibility with modern ECMAScript
       },
     },
     plugins: {
-      '@typescript-eslint': tseslint, // Agregamos el plugin de TypeScript
-      prettier: 'prettier', // Agregamos el plugin de Prettier
+      '@typescript-eslint': tseslint, // We add the TypeScript plugin
+      prettier: 'prettier', // We add the Prettier plugin
     },
     extends: [
-      'plugin:prettier/recommended', // Activa Prettier como regla de ESLint
+      'plugin:prettier/recommended', // Enables Prettier as an ESLint rule
     ],
     rules: {
-      'prettier/prettier': 'error', // Para que los problemas de Prettier sean tratados como errores
-      // Puedes agregar otras reglas aquí si lo necesitas
+      'prettier/prettier': 'error', // Make Prettier issues be treated as errors
+      // You can add other rules here if needed
     },
   },
-  pluginJs.configs.recommended, // Reglas recomendadas por ESLint para JS
-  tseslint.configs.recommended, // Reglas recomendadas por @typescript-eslint
+  pluginJs.configs.recommended, // Recommended ESLint rules for JS
+  tseslint.configs.recommended, // Recommended rules for @typescript-eslint
   {
-    ignores: ['node_modules', 'build'], // Ignoramos ciertos directorios
+    ignores: ['node_modules', 'build'], // We ignore certain directories
   },
 ]

@@ -1,38 +1,56 @@
 # Express TS Template Starter
 
-A simple and efficient template for building **Express.js** applications with **TypeScript**. This project eliminates the need to rewrite boilerplate code, providing a ready-to-use setup that includes ESLint, Prettier, and TypeScript configurations.
+A simple and efficient template for building **Express.js** applications with **TypeScript** using MCV architecture. This project comes pre-configured with **ESLint**, **Prettier**, and **TypeScript**, saving you time and effort when starting a new project.
 
 ## Features
 
-- **TypeScript**: Strongly typed JavaScript for better development experience.
+- **TypeScript**: Strongly typed JavaScript for a better development experience.
 - **Express.js**: Web framework for building server-side applications.
-- **Socket.io**: Integrated real-time communication via WebSockets.
-- **Prettier**: Code formatting to maintain a consistent style.
-- **ESLint**: Linting setup for cleaner and more maintainable code.
-- **Dotenv**: Easy environment variable management.
+- **Socket.io**: Real-time communication support via WebSockets.
+- **Prettier**: Automatic code formatting to maintain consistency.
+- **ESLint**: Ensures cleaner and more maintainable code.
+- **Dotenv**: Simple environment variable management.
 
 ## Why Use This Template?
 
-Starting a new Express project can often involve repetitive setup tasks like configuring TypeScript, setting up development environments, and installing tools like Prettier and ESLint. This template does all of that for you so you can focus on building your application right away.
+This template handles all the setup you need when starting a new **Express** and **TypeScript** project. It eliminates the need to configure **Prettier**, **ESLint**, or **Socket.io**, letting you focus directly on writing your application logic.
 
 ### Tech Stack
 
-- **Express.js**: Fast, unopinionated, minimalist web framework for Node.js.
+- **Express.js**: Fast, minimalist web framework for Node.js.
 - **TypeScript**: Typed superset of JavaScript that compiles to plain JavaScript.
-- **Socket.io**: Library to enable real-time, bidirectional communication between clients and servers.
-- **ESLint + Prettier**: Ensures consistent code style and catches potential issues early.
+- **Socket.io**: Enables real-time, bidirectional communication between clients and servers.
+- **Prettier & ESLint**: Ensures a consistent code style and catches potential issues.
 
-## Quick Start
+## API Routes EXAMPLES
 
-### Requirements
+The API uses the prefix `/api/` for all routes. Example CRUD routes for user management:
 
-- **Node.js** v16+
-- **npm** or **yarn**
+- **GET** `/api/users`: Retrieve all users.
+- **GET** `/api/users/:id`: Retrieve a user by their ID.
+- **POST** `/api/users`: Create a new user.
+- **PUT** `/api/users/:id`: Update a user by their ID.
+- **DELETE** `/api/users/:id`: Delete a user by their ID.
 
-### Installation
+These routes are set up in `src/routes/userRoutes.ts` and can be easily extended as needed.
 
-1. **Clone the repository:**
+## Mock Data
 
-   ```bash
-   git clone https://github.com/Mafifa/express-ts-template
-   ```
+The `mock/` folder contains a JSON file (`users.json`) that is used as example data throughout the project. The file includes mock user data for testing purposes:
+
+```json
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "age": 30
+  },
+  {
+    "id": 2,
+    "name": "Jane Smith",
+    "email": "jane.smith@example.com",
+    "age": 25
+  }
+]
+```

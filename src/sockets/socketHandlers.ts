@@ -1,19 +1,19 @@
-import { Server, Socket } from 'socket.io'
+import { Server } from 'socket.io'
 
-// Función para manejar la lógica de conexión de sockets
-export function socketHandler(io: Server) {
-  io.on('connection', (socket: Socket) => {
-    console.log('Nuevo cliente conectado')
+export const socketHandler = (io: Server): void => {
+  // Listen for connection events
+  io.on('connection', (socket) => {
+    console.log('A user connected')
 
-    // Lógica adicional del socket aquí
-    socket.on('disconnect', () => {
-      console.log('Cliente desconectado')
+    // Handle custom events
+    socket.on('message', (msg) => {
+      console.log(`Message received: ${msg}`)
+      io.emit('message', msg) // Broadcast the message to all clients
     })
 
-    // Puedes agregar otros eventos que maneje el socket
-    socket.on('mensaje', (data) => {
-      console.log('Mensaje recibido:', data)
-      socket.emit('respuesta', 'Mensaje recibido')
+    // Handle disconnection
+    socket.on('disconnect', () => {
+      console.log('A user disconnected')
     })
   })
 }

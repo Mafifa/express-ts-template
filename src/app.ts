@@ -1,14 +1,31 @@
 import express, { Application } from 'express'
-import cors from 'cors'
-import bodyParser from 'body-parser'
+import { json, urlencoded } from 'body-parser'
+import { corsMiddleware } from './middlewares/cors'
 import router from './routes/routes'
 
 const app: Application = express()
 
-// Middlewares
-app.use(cors())
-app.use(bodyParser.json())
+// Apply the CORS middleware
+app.use(corsMiddleware)
 
-// Routes
-app.use('/', router)
+// Global middlewares
+app.use(json())
+app.use(urlencoded({ extended: true }))
+
+// Use defined routes
+app.use('/api', router)
+
+// Error handling middleware
+app.use(
+  (
+    err: any,
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction
+  ) => {
+    console.error(err.stack)
+    res.status(500).send('Something went wrong!')
+  }
+)
+
 export default app

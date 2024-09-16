@@ -6,18 +6,18 @@ import { socketHandler } from './sockets/socketHandlers'
 
 dotenv.config()
 
-const PORT = process.env.PORT ?? 0
+const PORT = process.env.PORT ?? 3000
 
-// Crear el servidor HTTP
+// Create the HTTP server
 const server = createServer(app)
 
-// Inicializar Socket.io
+// Initialize Socket.io
 const io = new Server(server)
 
-// Utilizar el manejador de sockets
+// Use the socket handler
 socketHandler(io)
 
-// Escuchar el puerto
+// Listen on the defined port
 server.listen(PORT, () => {
-  console.log(`Servidor corriendo en el puerto ${PORT}`)
+  console.log(`Server running on port ${PORT}`)
 })

@@ -1,6 +1,5 @@
-export interface User {
-  id: string
-  email: string
+export interface UserData {
   name: string
-  // Anothers fields
+  email: string
+  age: number
 }
